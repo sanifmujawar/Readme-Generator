@@ -104,6 +104,7 @@ let {
 
 // console.log(response);
 
+
 function generateLicenseBadge(license) {
   console.log(license);
   if (license === "MIT License") {
@@ -164,3 +165,5 @@ ${email}
 
 ${gitHubRepositoryName}
 `;
+
+await fs.writeFile("./output/generated-README.md", template);
