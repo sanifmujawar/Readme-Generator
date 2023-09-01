@@ -1,3 +1,6 @@
+// inquirer documentation -  https://www.npmjs.com/package/inquirer
+import inquirer from 'inquirer';
+
 const fs = require("fs");
 const path = require('path');
 const inquirer = require("inquirer");
