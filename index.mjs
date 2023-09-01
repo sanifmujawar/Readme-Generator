@@ -104,7 +104,6 @@ let {
 
 // console.log(response);
 
-
 function generateLicenseBadge(license) {
   console.log(license);
   if (license === "MIT License") {
@@ -124,4 +123,44 @@ function generateLicenseBadge(license) {
   }
 }
 
+let template = `
+<div align="center">
+<h1 align="center">${title}</h1>
+</div>
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li><a href="#description">Description</a></li>
+    <li><a href="#installation">Installation</a></li>
+    <li><a href="#usage">Usage</a></li>
+    <li><a href="#contributing">Contributing</a></li>
+    <li><a href="#tests">Tests</a></li>
+    <li><a href="#license">License</a></li>
+    <li><a href="#questions">Questions</a></li>
+  </ol>
+</details>
 
+## Description
+${description}
+
+## Installation
+${installation}
+
+## Usage
+${usage}
+
+## Contributing
+${contributing}
+
+## Tests
+${tests}
+
+## License
+${generateLicenseBadge(license)}
+
+## Questions
+${gitHubUsername}
+${email}
+
+${gitHubRepositoryName}
+`;
