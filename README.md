@@ -28,7 +28,8 @@ To use the README Generator:
 ## Demo 📸
 
 Take a look at the README Generator in action:
-![README Generator Demo](./assets/demo.gif)
+
+![README Generator Demo](./demo/demo.gif)
 
 ## Technical Details 🛠️
 
