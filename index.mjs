@@ -89,7 +89,7 @@ let {
     name: "gitHubUsername",
     message: "GitHub username:",
     default() {
-      return "apyosi";
+      return "sanifmujawar";
     },
   },
   {
@@ -104,9 +104,9 @@ let {
 
 // console.log(response);
 
-
-function generateLicenseBadge(license) {
-  console.log(license);
+//Function with markdown
+/* function generateLicenseBadge(license) {
+  // console.log(license);
   if (license === "MIT License") {
     return "[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)";
   } else if (license === "GNU GPL v3") {
@@ -122,13 +122,39 @@ function generateLicenseBadge(license) {
   } else if (license === "Creative Commons Zero") {
     return "[![License: CC0-1.0](https://licensebuttons.net/l/zero/1.0/80x15.png)](http://creativecommons.org/publicdomain/zero/1.0/)";
   }
+} */
+
+//function with html tags
+function generateLicenseBadge(license) {
+  // console.log(license);
+  if (license === "MIT License") {
+    return '<a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt=""></a>';
+  } else if (license === "GNU GPL v3") {
+    return '<a href="https://www.gnu.org/licenses/gpl-3.0"><img src="https://img.shields.io/badge/License-GPLv3-blue.svg" alt=""></a>';
+  } else if (license === "GNU GPL v2") {
+    return '<a href="https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html"><img src="https://img.shields.io/badge/License-GPL_v2-blue.svg" alt=""></a>';
+  } else if (license === "BSD 3-Clause") {
+    return '<a href="https://opensource.org/licenses/BSD-3-Clause"><img src="https://img.shields.io/badge/License-BSD_3--Clause-blue.svg" alt=""></a>';
+  } else if (license === "BSD 2-Clause") {
+    return '<a href="https://opensource.org/licenses/BSD-2-Clause"><img src="https://img.shields.io/badge/License-BSD_2--Clause-orange.svg" alt=""></a>';
+  } else if (license === "Apache 2.0") {
+    return '<a href="https://opensource.org/licenses/Apache-2.0"><img src="https://img.shields.io/badge/License-Apache_2.0-blue.svg" alt=""></a>';
+  } else if (license === "Creative Commons Zero") {
+    return '<a href="http://creativecommons.org/publicdomain/zero/1.0/"><img src="https://licensebuttons.net/l/zero/1.0/80x15.png" alt=""></a>';
+  }
 }
 
 let template = `
+<a id="readme-top"></a>
 <div align="center">
 <h1 align="center">${title}</h1>
+<a href="https://github.com/${gitHubUsername}/${gitHubRepositoryName}/graphs/contributors"><img src="https://img.shields.io/github/contributors/${gitHubUsername}/${gitHubRepositoryName}.svg?style=for-the-badge" alt=""></a>
+<a href="https://github.com/${gitHubUsername}/${gitHubRepositoryName}/network/members"><img src="https://img.shields.io/github/forks/${gitHubUsername}/${gitHubRepositoryName}.svg?style=for-the-badge" alt=""></a>
+<a href="https://github.com/${gitHubUsername}/${gitHubRepositoryName}/stargazers"><img src="https://img.shields.io/github/stars/${gitHubUsername}/${gitHubRepositoryName}.svg?style=for-the-badge" alt=""></a>
+<a href="https://github.com/${gitHubUsername}/${gitHubRepositoryName}/issues"><img src="https://img.shields.io/github/issues/${gitHubUsername}/${gitHubRepositoryName}.svg?style=for-the-badge" alt=""></a>
+${generateLicenseBadge(license)}
 </div>
-<details>
+<details open>
   <summary>Table of Contents</summary>
   <ol>
     <li><a href="#description">Description</a></li>
@@ -141,29 +167,50 @@ let template = `
   </ol>
 </details>
 
-## Description
+<h2 id="description">🧾 Description</h2>
+
 ${description}
 
-## Installation
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<h2 id="installation">🛠️ Installation</h2>
+
 ${installation}
 
-## Usage
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<h2 id="usage">▶️ Usage</h2>
+
 ${usage}
 
-## Contributing
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<h2 id="contributing">🧑🏻‍🔧 Contributing</h2>
+
 ${contributing}
 
-## Tests
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<h2 id="tests">🧪 Tests</h2>
+
 ${tests}
 
-## License
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<h2 id="license">🔍 License</h2>
+
 ${generateLicenseBadge(license)}
 
-## Questions
-${gitHubUsername}
-${email}
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-${gitHubRepositoryName}
+<h2 id="questions">❓ Questions</h2>
+
+You can reach me for any questions on the email: ${email}<br>
+As well on the github repo page: [https://github.com/${gitHubUsername}/${gitHubRepositoryName}](https://github.com/${gitHubUsername}/${gitHubRepositoryName})
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 `;
+
+console.log("The README.md is generated in the output directory!");
 
 await fs.writeFile("./output/generated-README.md", template);
